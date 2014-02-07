@@ -1,6 +1,6 @@
-    Test-Signal-Generator, a script which generates a 1 minute long .wav 
-    file containing a test signal calculated from three parameterized 
-    sine functions.
+    "wave" is a test signal generator, a script that generates a WAVE
+    file of a duration of 1 minute containing a test signal calculated
+    from three parameterized sine functions.
 
     Copyright (C) 2014  Cyrill Steiner
 

@@ -1,3 +1,7 @@
-Generates a 1 minute long .wav file containing a test signal calculated out of three parameterized sine functions
+"wave" is a test signal generator, a script that generates a WAVE
+file of a duration of 1 minute containing a test signal calculated
+from three parameterized sine functions.
+The file has two channels (stereo) and is 16 bit with a sampling
+frequence of 44100 hertz.
 
 

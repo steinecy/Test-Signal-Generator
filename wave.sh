@@ -19,9 +19,22 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-echo                                                                                                
-echo                                                                                             
-echo                                                                                                   
+# Defining Input Variables
+#
+frequency1='     '
+frequency2='     '
+frequency3='     '
+offsetfactor1='   '
+offsetfactor2='   '
+offsetfactor3='   '
+amplitude1='   '
+amplitude2='   '
+amplitude3='   '
+contribution3='        '
+counter=2;
+writescreen()
+{
+echo                                                                                                                                                                                                   
 echo                                                                                             
 echo ' wwwwwww           wwwww           wwwwwwwaaaaaaaaaaaaavvvvvvv           vvvvvvv eeeeeeeeeeee'    
 echo '  w:::::w         w:::::w         w:::::w a::::::::::::av:::::v         v:::::vee::::::::::::ee'  
@@ -37,7 +50,6 @@ echo '           w:::w           w:::w         a::::::::::aa:::a       v:::v    
 echo '            www             www           aaaaaaaaaa  aaaa        vvv            eeeeeeeeeeeeee'
 echo
 echo
-echo
 echo '      * *                 * *                 * *                 * *                 * *    '
 echo '    *     *             *     *             *     *             *     *             *     *  '
 echo '   *       *           *       *           *       *           *       *           *       * '
@@ -45,8 +57,7 @@ echo '  +---------+---------+---------+---------+---------+---------+---------+-
 echo '             *       *           *       *           *       *           *       *           '
 echo '              *     *             *     *             *     *             *     *            '
 echo '                * *                 * *                 * *                 * *              '
-echo
-echo                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+echo                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 echo
 echo '               This script generates a sine wave .wav sound file of 1 minute length'
 echo
@@ -54,58 +65,59 @@ echo '              Offset and frequency of three sine waves can be entered as p
 echo '         The values of all three sine waveforms are added up to result in one sound signal'
 echo
 echo
-echo 'Please enter frequency of wave no. 1 (reasonable values range from 50 to 20.000 Hertz)' 
-
+printf '                 +---------------+-----------+--------+-----------+----------+\n'
+printf '                 | Sinecurve No. | Frequency | Offset | Amplitude | Halfwave |\n'
+printf '                 +---------------+-----------+--------+-----------+----------+\n'
+printf '                 |       1       |   %5s   |  %4s  |    %4s   |     n.a. |\n' "$frequency1" "$offsetfactor1" "$amplitude1"
+printf '                 +---------------+-----------+--------+-----------+----------+\n'
+printf '                 |       2       |   %5s   |  %4s  |    %4s   |     n.a. |\n' "$frequency2" "$offsetfactor2" "$amplitude2"
+printf '                 +---------------+-----------+--------+-----------+----------+\n'
+printf '                 |       3       |   %5s   |  %4s  |    %4s   | %8s |\n' "$frequency3" "$offsetfactor3" "$amplitude3" "$contribution3"
+printf '                 +---------------+-----------+--------+-----------+----------+\n\n'
+}
+clear
+writescreen
+printf " Please enter frequency of sine tone 1 (reasonable values range from 50 to 20.000 Hertz) "
 read frequency1
-
-echo 'Please enter offset of wave no. 1 (as a factor of one wavelength between 0 and 1)' 
-
+clear
+writescreen
+printf " Please enter offset of sine tone 1 (as a factor of one wavelength between 0 and 1) "
 read offsetfactor1
-
-echo 'Please enter an amplitude factor for wave no. 1 (reasonable values range from 0 to 1)' 
-
+clear
+writescreen
+printf " Please enter an amplitude factor for sine tone 1 (reasonable values range from 0 to 1) "
 read amplitude1
-
-echo 'You entered a frequency of '$frequency1', an offset of '$offsetfactor1' and an elongation factor of '$amplitude1
-
-
-
-echo 'Please enter frequency of wave no. 2 (reasonable values range from 50 to 20.000 Hertz)' 
-
+clear
+writescreen
+printf " Please enter frequency of sine tone 2 (reasonable values range from 50 to 20.000 Hertz) "
 read frequency2
-
-echo 'Please enter offset of wave no. 2 (as a factor of one wavelength between 0 and 1)' 
-
+clear
+writescreen
+printf " Please enter offset of sine tone 2 (as a factor of one wavelength between 0 and 1) "
 read offsetfactor2
-
-echo 'Please enter an amplitude factor for wave no. 2 (height of waveform, reasonable values range from 0 to 1)' 
-
+clear
+writescreen
+printf " Please enter an amplitude factor for sine tone 2 (reasonable values range from 0 to 1) "
 read amplitude2
-
-echo 'You entered a frequency of '$frequency2', an offset of '$offsetfactor2' and an elongation factor of '$amplitude2
-
-
-
-echo 'Please enter frequency of wave no. 3 (reasonable values range from 50 to 20.000 Hertz)' 
-
+clear
+writescreen
+printf " Please enter frequency of sine tone 3 (reasonable values range from 50 to 20.000 Hertz) "
 read frequency3
-
-echo 'Please enter offset of wave no. 3 (as a factor of one wavelength between 0 and 1)' 
-
+clear
+writescreen
+printf " Please enter offset of sine tone 3 (as a factor of one wavelength between 0 and 1) "
 read offsetfactor3
-
-echo 'Please enter an amplitude factor for wave no. 3 (height of waveform, reasonable values range from 0 to 1)' 
-
+clear
+writescreen
+printf " Please enter an amplitude factor for sine tone 3 (reasonable values range from 0 to 1) "
 read amplitude3
-
-echo 'For sinewave 3 you can choose to add only positive, negative or all half waves to the result.'
-echo 'Enter halfwave contribution to the result (positive, negative or all):'
-
+clear
+writescreen
+printf " Signal of sine tone 3 is added or omitted dependend from value of halfwave of sine tone 2\n"
+printf " Please enter a value for halfwave cancelation for sine tone 3 (positive, negative, all): "
 read contribution3
-
-echo 'You entered a frequency of '$frequency3', an offset of '$offsetfactor3', an elongation factor of '$amplitude3
-echo 'and a contribution of '$contribution3' halfwaves'
-
+clear
+writescreen
 
 echo 'Now file header is created...'
 
@@ -115,9 +127,9 @@ echo 'Now file header is created...'
 writehex  ()
 {
     while [ $1 ]; do
-        for ((i=0; i<${#1}; i+=2))
+        for ((ii=0; ii<${#1}; ii+=2))
         do
-            printf "\x${1:i:2}";
+            printf "\x${1:ii:2}";
         done;
         shift;
     done
@@ -233,11 +245,13 @@ writehex C07FA100 >> sinetone.wav
 
 # that's it folks, we are done with the header, calculation of the raw data can start
 
-echo 'creation of file header is has completed'
-echo 'comencing calculation of raw data ...'
+echo 'creation of file header is has completed';
+echo 'comencing calculation of raw data ...';
+
 
 # setting constants to defined values
 
+v=0
 x=0
 y=0
 z=0
@@ -255,6 +269,7 @@ typeset -F y
 typeset -F z
 typeset -F u
 typeset -F s
+typeset -F v
 typeset -i S
 
 # calculating the offset for the three sinewaves based on frequency and offset factor
@@ -266,7 +281,21 @@ offset3=(1/frequency3*offsetfactor3)
 
 # Starting mainloop to calculate sinewave values and writing to wave file
 
+
+writescreen2()
+{
+printf '\n                 Datapoint little Endian Hex = %5s\n' "$hexS_swapped";
+printf '                 Datapoint decimal:          = %5s\n' "$S";
+printf '                 Percentage done:            = %2.2f \%\n' "$v";
+}  
+
+#writescreen2;
+#printf 'erster Breakpoint';
+#read breakpoint;
+
 for i in {1..2646000}
+
+# for i in {1..26460}
 
 # Calculating first sine curve
 
@@ -287,21 +316,16 @@ u=u*amplitude3;
 
 case $contribution3 in
 negative);
-if [ u -lt 0 ];
+if [ z -lt 0 ];
 then let u=0;
-echo 'negative';
-echo 'Der Wert von u ist gleich '$u;
 fi;
 ;;
 positive);
-if [ u -gt 0 ];
+if [ z -gt 0 ];
 then let u=0;
-echo 'positive';
-echo 'Der Wert von u ist gleich '$u;
 fi;
 ;;
 esac;
-
 
 # Adding up the three values to a resulting curve
 # and normalizing it to 1 (by dividing by 3)
@@ -312,25 +336,23 @@ esac;
 # sine function generates flowting point figures
 # but we need integer thus in this step we we do the
 # rounding to integer
-echo 'S='$S 'und s='$s;
-((S=s+,5));
 
-echo 's nicht gerundet ist gleich: '$s
-echo 'S gerundet ist gleich: '$S
+
+((S=s+0,5));
+
  
 # transforming S from -32768 to 32767 singed integer to
 # 0 - 65535 unsigned integer
 if [ S -lt 0 ];
 then let S=S+65536;
 fi;
+ 
 
 # converting from decimal to hexadecimal
 
 hexS=0;
 
 hexS=$(printf "%04X\n" $S);
-
-echo 'hexS = '$hexS;
 
 # now lets convert from big to little endian
 # by cropping hexS and rearrange left and right part
@@ -339,13 +361,76 @@ hex_left=${hexS:0:2};
 
 hex_right=${hexS:2:2};
 
-echo 'hex_left = '$hex_left;
-
-echo 'hex_right = '$hex_right; 
-
 hexS_swapped=$hex_right$hex_left;
 
-echo 'hexS_swapped = '$hexS_swapped;
+v=$((i/2646000.00*100.00));
+
+# show progress screen (as this script runs slow, a progress screen is helpful)
+
+ if (($i % 500 == 0)); then
+   
+
+    case $counter in
+   
+         1); # umgekehrter Schrägstrich
+         clear;
+         writescreen;
+         printf '                      \u005C                         \u005C                       \u005C\n'; 
+         writescreen2;
+         counter=2;
+         ;;
+         2); # senkrechter Strich
+         clear;
+         writescreen;
+         printf '                      \u007C                         \u007C                       \u007C\n';
+         writescreen2;  
+         counter=3;
+         ;;
+         3); # Schrägstrich
+         clear; 
+         writescreen;
+         printf '                      \u002F                         \u002F                       \u002F\n';
+         writescreen2; 
+         counter=4;
+         ;;
+         4); # Horizontale Linie verlängert
+         clear;
+         writescreen;
+         printf '                      \u23AF                         \u23AF                       \u23AF\n';
+         writescreen2;    
+         counter=5;
+         ;;
+         5); # umgekehrter Schrägstrich
+         clear;
+         writescreen;
+         printf '                      \u005C                         \u005C                       \u005C\n'; 
+         writescreen2;
+         counter=6;
+         ;;
+         6); # senkrechter Strich
+         clear;
+         writescreen;
+         printf '                      \u007C                         \u007C                       \u007C\n';
+         writescreen2;  
+         counter=7;
+         ;;
+         7); # Schrägstrich
+         clear; 
+         writescreen;
+         printf '                      \u002F                         \u002F                       \u002F\n';
+         writescreen2; 
+         counter=8;
+         ;;
+         8); # Horizontale Linie verlängert
+         clear;
+         writescreen;
+         printf '                      \u23AF                         \u23AF                       \u23AF\n';
+         writescreen2;    
+         counter=1;
+    esac;
+
+ fi;
+
 
 # now the figure has the proper little endian
 # hex format and can be written to the file
@@ -353,11 +438,14 @@ echo 'hexS_swapped = '$hexS_swapped;
 writehex $hexS_swapped >> sinetone.wav;
 writehex $hexS_swapped >> sinetone.wav;
 
-echo 'Der unsigned Integer Wert von S ist gleich: '$S;
-
 let x=x+1;
 
 done;
+clear;
+writescreen;
+printf '\n';
+writescreen2;
+
 
 
 
